@@ -117,7 +117,7 @@ INSERT INTO settings VALUES (40, 'userAgent', 'Mozilla/5.0 (X11; Linux x86_64; r
 
 CREATE TABLE "temp" (
   "id" INTEGER PRIMARY KEY NOT NULL,
-  "name" varchar(200) DEFAULT NULL,
+  "name" varchar(500) DEFAULT NULL,
   "path" varchar(200) DEFAULT NULL,
   "tracker" varchar(30) DEFAULT NULL,
   "date" varchar(120) DEFAULT NULL,
