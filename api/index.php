@@ -198,6 +198,8 @@ elseif ($resource === 'torrents' && $httpMethod === 'POST')
     $rawUrl  = trim($b['url'] ?? '');
     $name    = trim($b['name'] ?? '');
     $tracker = trim($b['tracker'] ?? '');
+    $savePath = trim($b['path'] ?? '');
+    $category = trim($b['category'] ?? '');
 
     if (!empty($rawUrl))
     {
@@ -214,7 +216,7 @@ elseif ($resource === 'torrents' && $httpMethod === 'POST')
         if (!Database::checkThremExist($tracker, $threme))
             api_respond(false, 'Тема уже отслеживается.', null, 409);
 
-        Database::setThreme($tracker, $name, '', $threme, 1);
+        Database::setThreme($tracker, $name, $savePath, $threme, 1, $category);
         api_respond(true, 'Тема добавлена.', ['tracker' => $tracker, 'threme' => $threme], 201);
     }
     elseif (!empty($tracker) && !empty($name))
@@ -233,7 +235,7 @@ elseif ($resource === 'torrents' && $httpMethod === 'POST')
         if (!Database::checkSerialExist($tracker, $name, $hd))
             api_respond(false, 'Сериал уже отслеживается.', null, 409);
 
-        Database::setSerial($tracker, $name, '', $hd);
+        Database::setSerial($tracker, $name, $savePath, $hd, $category);
         api_respond(true, 'Сериал добавлен.', ['tracker' => $tracker, 'name' => $name, 'hd' => $hd], 201);
     }
     else
