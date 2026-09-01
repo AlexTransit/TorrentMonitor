@@ -194,10 +194,10 @@ elseif ($resource === 'torrents' && $httpMethod === 'GET')
 
 elseif ($resource === 'torrents' && $httpMethod === 'POST')
 {
-    $b       = body();
-    $rawUrl  = trim($b['url'] ?? '');
-    $name    = trim($b['name'] ?? '');
-    $tracker = trim($b['tracker'] ?? '');
+    $b        = body();
+    $rawUrl   = trim($b['url'] ?? '');
+    $name     = trim($b['name'] ?? '');
+    $tracker  = trim($b['tracker'] ?? '');
     $savePath = trim($b['path'] ?? '');
     $category = trim($b['category'] ?? '');
 
